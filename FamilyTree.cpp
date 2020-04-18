@@ -35,11 +35,11 @@ Tree& Tree::addFather(string child,string father){
             return *this;
         }
         else
-            throw exception("cant add father to: " + child);
+            throw runtime_error("cant add father to: " + child);
     }
     Tree* found = search(child);
     if(found == NULL)
-        throw ("no name "+child);
+        throw runtime_error("no name "+child);
     if(found->father == NULL)
     {
         found->father = new Tree(father);
@@ -48,7 +48,7 @@ Tree& Tree::addFather(string child,string father){
         return *this;
     }
     else
-        throw exception("cant add father to: " + child);
+        throw runtime_error("cant add father to: " + child);
 }
 
 
@@ -63,13 +63,13 @@ Tree& Tree::addMother(string child,string mother){
             return *this;
         }
         else
-            throw ("cant add mother to: " + child);
+            throw runtime_error("cant add mother to: " + child);
     }
     else if(this->data != child)
     {
         Tree* found = search(child);
         if(found == nullptr)
-            throw ("no name "+child);
+            throw runtime_error("no name "+child);
         if(found->mother == nullptr)
         {
             found->mother = new Tree(mother);
@@ -78,7 +78,7 @@ Tree& Tree::addMother(string child,string mother){
             return *this;
         }
         else
-            throw ("cant add mother to: " + child);
+            throw runtime_error("cant add mother to: " + child);
     }
     return *this;
 }
@@ -165,7 +165,7 @@ string Tree::find(string relate){
     }
     Tree* found = findRelate(this, relate);
     if(found == NULL)
-        throw("there is no relation: " + relate);
+        throw runtime_error("there is no relation: " + relate);
     return found->data;
 }
 
@@ -201,14 +201,14 @@ string Tree::remove(string name){
     if(this == NULL)
         return NULL;
     if(relation(name) == "unrelated")
-        throw(name + "not found\n");    
+        throw runtime_error(name + "not found\n");    
     Tree* found; 
     Tree* found2; 
     string ans;  
     found = search(name);
     found2 = search(found->child);
     if(found == this)
-        throw("cannot remove root");
+        throw runtime_error("cannot remove root");
     ans = found->data;   
     my_delete(found);
     if(found->gender == "male")
