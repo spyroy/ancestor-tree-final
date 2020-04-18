@@ -35,7 +35,7 @@ Tree& Tree::addFather(string child,string father){
             return *this;
         }
         else
-            throw ("cant add father to: " + child);
+            throw exception("cant add father to: " + child);
     }
     Tree* found = search(child);
     if(found == NULL)
@@ -48,7 +48,7 @@ Tree& Tree::addFather(string child,string father){
         return *this;
     }
     else
-        throw ("cant add father to: " + child);
+        throw exception("cant add father to: " + child);
 }
 
 
