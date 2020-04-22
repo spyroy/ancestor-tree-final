@@ -8,10 +8,6 @@ Tree::Tree(string name){
     gender = "";
 }
 
-Tree::~Tree(){
-     my_delete((this));
-}
-
 Tree* Tree::search(string child){   
     if(this == NULL){
         return NULL;
@@ -196,11 +192,9 @@ void Tree::my_delete(Tree* root){
     my_delete(root->mother);  
     my_delete(root->father);
     if(root->father != NULL){
-        delete(root->father)
         root->father = NULL;
     }
     if(root->mother != NULL){
-        delete(root->mother)
         root->mother = NULL;
     }
 }
@@ -220,11 +214,9 @@ string Tree::remove(string name){
     ans = found->data;   
     my_delete(found);
     if(found->gender == "male"){
-        delete(found2->father)
         found2->father = NULL;
     }
     if(found->gender == "female"){
-        delete(found2->mother)
         found2->mother = NULL;
     }
     return ans;
