@@ -21,7 +21,6 @@ namespace family
             Tree* findRelate(Tree* t,string relate);
             void displayTree(const std::string& prefix, Tree* node, bool isLeft);
             void my_delete(Tree*);
-            ~Tree();
         public:
             Tree(string s);
             Tree& addFather(string child, string father);
